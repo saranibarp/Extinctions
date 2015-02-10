@@ -1,1 +1,20 @@
-<p>animal info here</p>
+<h1><%= @animal.name %></h1>
+
+<p>Common names:
+  <ul> 
+    <% @animal.common_names.each do |common_name| %>
+      <li><%= common_name.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= image_tag(@animal.image_url) if !@animal.image_url.empty? %>
+   
+<p>Extinction date: 
+  Year <%= @animal.extinction_date %>
+  <%= '(Recent)' if @animal.recent? %>
+</p>
+
+<p>
+  <%= link_to "Source", @animal.url, target: "_blank" %>
+</p>
