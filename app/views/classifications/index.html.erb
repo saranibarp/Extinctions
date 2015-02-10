@@ -1,0 +1,11 @@
+<h1>Classifications</h1>
+
+<p>We have the following classifications:</p>
+
+<ul>
+  <% @classifications.each do |classification| %>
+    <li><%= link_to(classification.name, classification_path(classification)) %>
+        (<%= classification.animals.count %> animals)
+    </li>
+  <% end %>
+</ul>

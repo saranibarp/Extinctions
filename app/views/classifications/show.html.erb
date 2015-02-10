@@ -1,0 +1,14 @@
+<h1><%= @classification.name %></h1>
+
+<ul>
+  <% @classification.all_animals.each do |animal| %>
+    <li><%= link_to(animal.name, animal_path(animal)) %> (<%= animal.extinction_date %>)
+        <% if !animal.image_url.empty? %>
+          <%= image_tag(animal.image_url) %>
+        <% end %>
+        <% if animal.recent? %>
+          (Recent)
+        <% end %>
+    </li>
+  <% end %>
+</ul>
