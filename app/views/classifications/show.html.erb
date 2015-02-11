@@ -1,10 +1,18 @@
 <h1><%= @classification.name %></h1>
 
-<ul>
+<table id="animal_list">
+  <tr><th>Scientific Name</th>
+      <th>Extinction Date</th>
+      <th>Image</th>
+      <th>Recent</th>
+  </tr>
+  
   <% @classification.all_animals.each do |animal| %>
-    <li><%= link_to(animal.name, animal_path(animal)) %> (<%= animal.extinction_date %>)
-        <%= image_tag(animal.image_url) if !animal.image_url.empty? %>
-        <%= '(Recent)' if animal.recent? %>
-    </li>
+    <tr><td><%= link_to(animal.name, classification_animal_path(@classification, animal)) %></td> 
+        <td class="center"><%= animal.extinction_date %></td>
+        <td class="center"><%= image_tag(animal.image_url) if !animal.image_url.empty? %></td>
+        <td class="center"><%= 'Yes' if animal.recent? %></td>
+    </tr>
   <% end %>
-</ul>
+
+</table>

@@ -5,4 +5,8 @@ class Animal < ActiveRecord::Base
   def recent?
     return true if extinction_date > 1900
   end
+
+  def to_param  # overridden
+    [id, name.parameterize].join("-")
+  end
 end
